@@ -1,4 +1,4 @@
-import { Code2, Palette, Rocket, Award, Users, Coffee } from 'lucide-react';
+import { Code2, Palette, Rocket, Award, Users, Coffee, Lightbulb, Layout, TestTube, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import profileImage from '@assets/generated_images/Professional_profile_photo_placeholder_8208da71.png';
@@ -8,17 +8,49 @@ export default function AboutSection() {
     {
       icon: Code2,
       title: 'Clean Code',
-      description: 'Writing maintainable and scalable code following best practices',
+      description: 'Writing maintainable and scalable code following industry best practices and standards',
     },
     {
       icon: Palette,
       title: 'Modern Design',
-      description: 'Creating beautiful, user-friendly interfaces with attention to detail',
+      description: 'Creating beautiful, user-friendly interfaces with attention to every detail',
     },
     {
       icon: Rocket,
       title: 'Fast Performance',
       description: 'Optimizing for speed and delivering exceptional user experiences',
+    },
+    {
+      icon: Award,
+      title: 'Quality Focused',
+      description: 'Committed to delivering high-quality solutions that exceed expectations',
+    },
+  ];
+
+  const process = [
+    {
+      icon: Lightbulb,
+      title: 'Discovery',
+      description: 'Understanding your goals, requirements, and target audience to create the perfect solution',
+      step: '01',
+    },
+    {
+      icon: Layout,
+      title: 'Design & Planning',
+      description: 'Creating wireframes, mockups, and detailed project plans for seamless execution',
+      step: '02',
+    },
+    {
+      icon: Code2,
+      title: 'Development',
+      description: 'Building your project with clean code, modern technologies, and best practices',
+      step: '03',
+    },
+    {
+      icon: TestTube,
+      title: 'Testing & Launch',
+      description: 'Rigorous testing across devices, optimization, and smooth deployment to production',
+      step: '04',
     },
   ];
 
@@ -108,16 +140,57 @@ export default function AboutSection() {
           </div>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {highlights.map((item, index) => (
-            <Card key={index} className="p-8 hover-elevate group" data-testid={`card-highlight-${index}`}>
-              <div className="p-4 rounded-xl bg-primary/10 w-fit mb-6 group-hover:bg-primary/20 transition-colors">
-                <item.icon className="h-8 w-8 text-primary" />
-              </div>
-              <h4 className="text-xl font-semibold mb-3">{item.title}</h4>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-            </Card>
-          ))}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">What I Bring to the Table</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Core principles that drive every project I work on
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {highlights.map((item, index) => (
+              <Card key={index} className="p-6 hover-elevate group" data-testid={`card-highlight-${index}`}>
+                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/10 to-chart-2/10 w-fit mb-4 group-hover:from-primary/20 group-hover:to-chart-2/20 transition-colors">
+                  <item.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+        
+        <div>
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4 px-4 py-1">My Process</Badge>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">How I Work</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A proven methodology that ensures successful project delivery
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {process.map((item, index) => (
+              <Card key={index} className="p-6 hover-elevate relative overflow-hidden group" data-testid={`card-process-${index}`}>
+                <div className="absolute top-4 right-4 text-6xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors">
+                  {item.step}
+                </div>
+                <div className="relative">
+                  <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                    <item.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Badge variant="outline" className="text-xs font-mono px-2 py-0.5">
+                      Step {item.step}
+                    </Badge>
+                    <h4 className="text-lg font-semibold">{item.title}</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
