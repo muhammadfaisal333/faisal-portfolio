@@ -1,5 +1,6 @@
-import { Code2, Palette, Rocket } from 'lucide-react';
+import { Code2, Palette, Rocket, Award, Users, Coffee } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import profileImage from '@assets/generated_images/Professional_profile_photo_placeholder_8208da71.png';
 
 export default function AboutSection() {
@@ -21,48 +22,100 @@ export default function AboutSection() {
     },
   ];
 
+  const stats = [
+    { icon: Award, value: '50+', label: 'Projects Completed' },
+    { icon: Users, value: '30+', label: 'Happy Clients' },
+    { icon: Coffee, value: '1000+', label: 'Cups of Coffee' },
+  ];
+
+  const expertise = ['WordPress Development', 'Custom Themes', 'Responsive Design', 'React Applications', 'UI/UX Implementation', 'Performance Optimization'];
+
   return (
-    <section id="about" className="py-20 md:py-32 bg-card/30">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          About Me
-        </h2>
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/20 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative">
+        <div className="text-center mb-16">
+          <Badge variant="secondary" className="mb-4 px-4 py-1">About Me</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Turning Ideas Into Reality
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Building exceptional digital experiences with passion and precision
+          </p>
+        </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-chart-2 rounded-xl blur-xl opacity-20" />
-              <img
-                src={profileImage}
-                alt="Muhammad Faisal"
-                className="relative rounded-xl w-full max-w-md shadow-xl border border-border"
-                data-testid="img-profile"
-              />
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20">
+          <div className="flex flex-col items-center lg:items-start">
+            <div className="relative mb-8">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-chart-2 to-primary rounded-2xl blur-2xl opacity-20 animate-pulse" />
+              <div className="relative">
+                <img
+                  src={profileImage}
+                  alt="Muhammad Faisal"
+                  className="rounded-2xl w-full max-w-sm shadow-2xl border-2 border-border"
+                  data-testid="img-profile"
+                />
+                <div className="absolute -bottom-6 -right-6 bg-card border-2 border-border rounded-xl p-4 shadow-xl">
+                  <div className="flex items-center gap-3">
+                    <div className="h-3 w-3 bg-chart-3 rounded-full animate-pulse" />
+                    <span className="text-sm font-semibold">Available for work</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
+              {stats.map((stat, index) => (
+                <Card key={index} className="p-4 text-center" data-testid={`card-stat-${index}`}>
+                  <stat.icon className="h-6 w-6 text-primary mx-auto mb-2" />
+                  <div className="text-2xl font-bold bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                </Card>
+              ))}
             </div>
           </div>
           
-          <div>
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4">
-              Hi, I'm Muhammad Faisal
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              I'm a passionate WordPress and Frontend Developer with extensive experience in building modern, responsive websites and web applications. I specialize in creating custom WordPress themes, developing interactive user interfaces, and bringing creative designs to life.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              With a strong foundation in HTML, CSS, JavaScript, and React, I focus on delivering high-quality solutions that not only look great but also perform exceptionally well. I'm committed to staying current with the latest web technologies and best practices.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether you need a custom WordPress site, a modern web application, or a complete frontend solution, I'm here to turn your vision into reality.
-            </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-3xl font-bold mb-4">
+                Hi, I'm Muhammad Faisal
+              </h3>
+              <div className="h-1 w-20 bg-gradient-to-r from-primary to-chart-2 rounded-full mb-6" />
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                I'm a passionate <span className="text-foreground font-semibold">WordPress and Frontend Developer</span> with extensive experience in building modern, responsive websites and web applications. I specialize in creating custom WordPress themes, developing interactive user interfaces, and bringing creative designs to life.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                With a strong foundation in HTML, CSS, JavaScript, and React, I focus on delivering high-quality solutions that not only look great but also perform exceptionally well. I'm committed to staying current with the latest web technologies and best practices.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Whether you need a custom WordPress site, a modern web application, or a complete frontend solution, I'm here to turn your vision into reality.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Areas of Expertise</h4>
+              <div className="flex flex-wrap gap-2">
+                {expertise.map((skill, index) => (
+                  <Badge key={index} variant="secondary" className="px-3 py-1">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((item, index) => (
-            <Card key={index} className="p-6 hover-elevate" data-testid={`card-highlight-${index}`}>
-              <item.icon className="h-12 w-12 text-primary mb-4" />
-              <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-              <p className="text-muted-foreground">{item.description}</p>
+            <Card key={index} className="p-8 hover-elevate group" data-testid={`card-highlight-${index}`}>
+              <div className="p-4 rounded-xl bg-primary/10 w-fit mb-6 group-hover:bg-primary/20 transition-colors">
+                <item.icon className="h-8 w-8 text-primary" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">{item.title}</h4>
+              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
             </Card>
           ))}
         </div>
