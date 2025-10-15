@@ -1,9 +1,12 @@
 import { ArrowDown, FileText, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 import heroImage from '@assets/generated_images/Professional_tech_hero_background_388070e1.png';
 
 export default function HeroSection() {
+  const { toast } = useToast();
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -12,8 +15,12 @@ export default function HeroSection() {
   };
 
   const handleResumeClick = () => {
-    console.log('Resume download clicked');
-    // TODO: Add actual resume download functionality
+    // TODO: Replace with actual resume file path
+    toast({
+      title: 'Resume Download',
+      description: 'Resume feature ready - add your PDF file to /public/resume.pdf',
+    });
+    console.log('Resume download clicked - add resume.pdf to public folder');
   };
 
   return (

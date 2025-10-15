@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { useMutation } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,14 +16,30 @@ export default function ContactSection() {
   });
   const { toast } = useToast();
 
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const response = await apiRequest('POST', '/api/contact', data);
+      return await response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: 'Message Sent!',
+        description: 'Thank you for reaching out. I\'ll get back to you soon.',
+      });
+      setFormData({ name: '', email: '', message: '' });
+    },
+    onError: () => {
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again.',
+        variant: 'destructive',
+      });
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: 'Message Sent!',
-      description: 'Thank you for reaching out. I\'ll get back to you soon.',
-    });
-    setFormData({ name: '', email: '', message: '' });
+    contactMutation.mutate(formData);
   };
 
   const contactInfo = [
@@ -57,6 +75,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
+                    disabled={contactMutation.isPending}
                     data-testid="input-name"
                   />
                 </div>
@@ -67,6 +86,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
+                    disabled={contactMutation.isPending}
                     data-testid="input-email"
                   />
                 </div>
@@ -76,12 +96,18 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
+                    disabled={contactMutation.isPending}
                     className="min-h-32"
                     data-testid="input-message"
                   />
                 </div>
-                <Button type="submit" className="w-full" data-testid="button-submit">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={contactMutation.isPending}
+                  data-testid="button-submit"
+                >
+                  {contactMutation.isPending ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>
