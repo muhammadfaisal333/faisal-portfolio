@@ -82,8 +82,8 @@ export function serveStatic(app: Express) {
   console.log("Serving static files from:", publicPath);
   app.use(express.static(publicPath));
 
-  // Serve built client
-  const distPath = path.resolve(__dirname, "../client/dist");
+  // Serve built client from root/dist/public
+  const distPath = path.resolve(__dirname, "../dist/public");
   if (!fs.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
@@ -97,3 +97,4 @@ export function serveStatic(app: Express) {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
+
