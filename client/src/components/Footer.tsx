@@ -23,10 +23,6 @@ export default function Footer() {
           <p className="text-center text-muted-foreground">
             © {new Date().getFullYear()} Muhammad Faisal. All rights reserved.
           </p>
-          
-          <p className="text-center text-sm text-muted-foreground">
-            Built with React, TypeScript, and Tailwind CSS
-          </p>
         </div>
       </div>
     </footer>

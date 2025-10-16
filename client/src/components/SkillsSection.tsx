@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { SiWordpress, SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, SiPhp, SiGit } from 'react-icons/si';
+import { SiWordpress, SiHtml5, SiCss3, SiJavascript, SiTailwindcss, SiPhp, SiFigma, SiCanva,} from 'react-icons/si';
+import { MdWeb } from 'react-icons/md'; // for Elementor
+import { FaLayerGroup } from 'react-icons/fa'; // for Divi
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -13,20 +15,24 @@ interface Skill {
 export default function SkillsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const skills: Skill[] = [
-    { name: 'WordPress', icon: SiWordpress, level: 95, category: 'cms' },
-    { name: 'HTML5', icon: SiHtml5, level: 98, category: 'frontend' },
-    { name: 'CSS3', icon: SiCss3, level: 95, category: 'frontend' },
-    { name: 'JavaScript', icon: SiJavascript, level: 90, category: 'frontend' },
-    { name: 'React', icon: SiReact, level: 85, category: 'framework' },
-    { name: 'Tailwind CSS', icon: SiTailwindcss, level: 92, category: 'framework' },
-    { name: 'PHP', icon: SiPhp, level: 80, category: 'backend' },
-    { name: 'Git', icon: SiGit, level: 88, category: 'tools' },
-  ];
+const skills: Skill[] = [
+  { name: 'WordPress', icon: SiWordpress, level: 95, category: 'cms' },
+  { name: 'Elementor', icon: MdWeb, level: 90, category: 'pagebuilder' },
+  { name: 'Divi', icon: FaLayerGroup, level: 80, category: 'pagebuilder' },
+  { name: 'HTML5', icon: SiHtml5, level: 98, category: 'frontend' },
+  { name: 'CSS3', icon: SiCss3, level: 95, category: 'frontend' },
+  { name: 'JavaScript', icon: SiJavascript, level: 90, category: 'frontend' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, level: 92, category: 'framework' },
+  { name: 'PHP', icon: SiPhp, level: 80, category: 'backend' },
+  { name: 'Figma', icon: SiFigma, level: 85, category: 'tools' },
+  { name: 'Canva', icon: SiCanva, level: 80, category: 'tools' },
+];
+
 
   const categories = [
     { id: 'all', label: 'All Skills' },
     { id: 'cms', label: 'CMS' },
+    { id: 'pagebuilder', label: 'Page Builder' },
     { id: 'frontend', label: 'Frontend' },
     { id: 'framework', label: 'Frameworks' },
     { id: 'backend', label: 'Backend' },

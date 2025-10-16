@@ -1,7 +1,7 @@
 import { Code2, Palette, Rocket, Award, Users, Coffee, Lightbulb, Layout, TestTube, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import profileImage from '@assets/generated_images/Professional_profile_photo_placeholder_8208da71.png';
+import profileImage from '@assets/generated_images/small size.jpeg';
 
 export default function AboutSection() {
   const highlights = [
@@ -10,7 +10,7 @@ export default function AboutSection() {
       title: 'Clean Code',
       description: 'Writing maintainable and scalable code following industry best practices and standards',
     },
-    {
+    {   
       icon: Palette,
       title: 'Modern Design',
       description: 'Creating beautiful, user-friendly interfaces with attention to every detail',
@@ -30,13 +30,13 @@ export default function AboutSection() {
   const process = [
     {
       icon: Lightbulb,
-      title: 'Discovery',
-      description: 'Understanding your goals, requirements, and target audience to create the perfect solution',
+      title: 'Consultation',
+      description: 'We discuss your goals, website needs, and style preferences to create a clear plan.',
       step: '01',
     },
     {
       icon: Layout,
-      title: 'Design & Planning',
+      title: 'Design',
       description: 'Creating wireframes, mockups, and detailed project plans for seamless execution',
       step: '02',
     },
@@ -48,7 +48,7 @@ export default function AboutSection() {
     },
     {
       icon: TestTube,
-      title: 'Testing & Launch',
+      title: 'Launch',
       description: 'Rigorous testing across devices, optimization, and smooth deployment to production',
       step: '04',
     },
@@ -60,7 +60,7 @@ export default function AboutSection() {
     { icon: Coffee, value: '1000+', label: 'Cups of Coffee' },
   ];
 
-  const expertise = ['WordPress Development', 'Custom Themes', 'Responsive Design', 'React Applications', 'UI/UX Implementation', 'Performance Optimization'];
+  const expertise = ['WordPress Website Development', 'Custom WordPress Themes & Plugins', 'Responsive & Mobile-Friendly Design', 'Website Optimization & Performance', 'Elementor & Other Page Builders', 'UI/UX Implementation'];
 
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
@@ -117,10 +117,10 @@ export default function AboutSection() {
               </h3>
               <div className="h-1 w-20 bg-gradient-to-r from-primary to-chart-2 rounded-full mb-6" />
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I'm a passionate <span className="text-foreground font-semibold">WordPress and Frontend Developer</span> with extensive experience in building modern, responsive websites and web applications. I specialize in creating custom WordPress themes, developing interactive user interfaces, and bringing creative designs to life.
+                I'm a passionate <span className="text-foreground font-semibold">WordPress and Frontend Developer</span> with extensive experience in building modern, responsive websites and web applications. I specialize in creating custom WordPress themes, developing interactive user interfaces, that look great and perform flawlessly.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                With a strong foundation in HTML, CSS, JavaScript, and React, I focus on delivering high-quality solutions that not only look great but also perform exceptionally well. I'm committed to staying current with the latest web technologies and best practices.
+                I work closely with clients to understand their vision and turn it into a fully functional website. My focus is on <span className="text-foreground font-semibold">WordPress</span>, <span className="text-foreground font-semibold">responsive design</span>, and creating sites that are easy to manage and update.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 Whether you need a custom WordPress site, a modern web application, or a complete frontend solution, I'm here to turn your vision into reality.

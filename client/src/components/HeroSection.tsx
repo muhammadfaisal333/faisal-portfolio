@@ -14,14 +14,11 @@ export default function HeroSection() {
     }
   };
 
-  const handleResumeClick = () => {
-    // TODO: Replace with actual resume file path
-    toast({
-      title: 'Resume Download',
-      description: 'Resume feature ready - add your PDF file to /public/resume.pdf',
-    });
-    console.log('Resume download clicked - add resume.pdf to public folder');
-  };
+const handleResumeClick = () => {
+  window.open('/resume.pdf', '_blank');
+};
+
+
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -98,7 +95,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t border-border/50">
           <div>
             <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent mb-2">
-              5+
+              2+
             </div>
             <div className="text-sm text-muted-foreground">Years Experience</div>
           </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Instagram } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -43,16 +43,17 @@ export default function ContactSection() {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'faisal@example.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-    { icon: MapPin, label: 'Location', value: 'New York, USA' },
+    { icon: Mail, label: 'Email', value: 'sheikhf3135@gmail.com' },
+    { icon: Phone, label: 'Phone', value: '+92 306 8017431' },
+    { icon: MapPin, label: 'Location', value: 'Rawalpindi, Pakistan' },
   ];
 
   const socialLinks = [
-    { icon: Github, label: 'GitHub', url: '#' },
-    { icon: Linkedin, label: 'LinkedIn', url: '#' },
-    { icon: Twitter, label: 'Twitter', url: '#' },
+  { icon: Github, label: 'GitHub', url: 'https://github.com/muhammadfaisal333' },
+  { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/muhammad-faisal333' },
+  { icon: Instagram, label: 'Instagram', url: 'https://www.instagram.com/imfaisal111?igsh=YXplNWFuMTB6ZTRp' },
   ];
+  
 
   return (
     <section id="contact" className="py-20 md:py-32">
@@ -135,15 +136,21 @@ export default function ContactSection() {
               <h3 className="text-xl font-semibold mb-4">Follow Me</h3>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => (
-                  <Button
-                    key={index}
-                    size="icon"
-                    variant="outline"
-                    onClick={() => console.log(`${social.label} clicked`)}
-                    data-testid={`button-social-${index}`}
+                  <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                   >
-                    <social.icon className="h-5 w-5" />
-                  </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      data-testid={`button-social-${index}`}
+                  >
+                      <social.icon className="h-5 w-5" />
+                    </Button>
+                  </a>
+
                 ))}
               </div>
             </Card>
