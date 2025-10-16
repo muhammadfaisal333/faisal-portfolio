@@ -1,7 +1,7 @@
 import { Code2, Palette, Rocket, Award, Users, Coffee, Lightbulb, Layout, TestTube, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import profileImage from '@assets/generated_images/small_size.jpeg';
+import profileImage from '@assets/generated_images/Small_size.jpeg';
 
 export default function AboutSection() {
   const highlights = [
