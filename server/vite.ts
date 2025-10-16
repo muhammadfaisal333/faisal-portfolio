@@ -6,6 +6,11 @@ import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 
+// Fix __dirname in ESM
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const viteLogger = createLogger();
 
 export function log(message: string, source = "express") {
@@ -41,23 +46,27 @@ export async function setupVite(app: Express, server: Server) {
   });
 
   app.use(vite.middlewares);
+
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
       const clientTemplate = path.resolve(
-        import.meta.dirname,
+        __dirname,
         "..",
         "client",
-        "index.html",
+        "index.html"
       );
 
-      // always reload the index.html file from disk incase it changes
+      // Always reload the index.html file from disk in case it changes
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
+
+      // Add cache-busting for main.tsx
       template = template.replace(
         `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
       );
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -68,15 +77,13 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  // ✅ Correct path to your /public folder (for resume.pdf)
+  // Serve public folder (resume.pdf, etc.)
   const publicPath = path.resolve(__dirname, "../public");
-console.log("Serving static files from:", publicPath);
-  // ✅ Serve files from /public (so /resume.pdf works)
+  console.log("Serving static files from:", publicPath);
   app.use(express.static(publicPath));
 
-  // ✅ Then serve built client (after build)
+  // Serve built client
   const distPath = path.resolve(__dirname, "../client/dist");
-
   if (!fs.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
@@ -85,7 +92,7 @@ console.log("Serving static files from:", publicPath);
 
   app.use(express.static(distPath));
 
-  // ✅ Fallback to index.html for client-side routing
+  // Fallback to index.html for client-side routing
   app.use("*", (_req, res) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
