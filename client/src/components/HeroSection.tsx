@@ -114,15 +114,15 @@ const handleResumeClick = () => {
         </div>
       </div>
       
-      <button
-        onClick={() => scrollToSection('about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-        data-testid="button-scroll-down"
-      >
-        <div className="p-3 rounded-full border-2 border-primary/50 bg-background/20 backdrop-blur-sm hover:border-primary transition-colors">
-          <ArrowDown className="h-5 w-5 text-primary" />
-        </div>
-      </button>
+     <button
+  onClick={() => scrollToSection('about')}
+  className="absolute bottom-8 inset-x-0 mx-auto w-max animate-bounce"
+>
+  <div className="p-3 rounded-full border-2 border-primary/50 bg-background/20 backdrop-blur-sm hover:border-primary transition-colors">
+    <ArrowDown className="h-5 w-5 text-primary" />
+  </div>
+</button>
+
     </section>
   );
 }
