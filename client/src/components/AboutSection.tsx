@@ -88,12 +88,13 @@ export default function AboutSection() {
                   className="rounded-2xl w-full max-w-sm shadow-2xl border-2 border-border"
                   data-testid="img-profile"
                 />
-                <div className="absolute -bottom-6 -right-6 bg-card border-2 border-border rounded-xl p-4 shadow-xl">
-                  <div className="flex items-center gap-3">
+                <div className="absolute -bottom-6 right-2 md:right-6 bg-card border-2 border-border rounded-xl p-4 shadow-xl">
+                    <div className="flex items-center gap-3">
                     <div className="h-3 w-3 bg-chart-3 rounded-full animate-pulse" />
                     <span className="text-sm font-semibold">Available for work</span>
-                  </div>
                 </div>
+</div>
+
               </div>
             </div>
             
